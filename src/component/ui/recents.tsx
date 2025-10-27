@@ -79,7 +79,7 @@ export function RecentTicketCard(
                     </Button>
                     {showModal && 
                         <div className="fixed top-0 left-0 overflow-hidden w-screen h-screen z-1000 bg-[#0000005f]">
-                            <div className="max-w-[500px] w-[80%] absolute overflow-hidden top-20 left-[40%] rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001">
+                            <div className="absolute overflow-hidden top-20 left-5 right-10 sm:left-20 sm:right-20 md:left-[20%] md:right-[20%] xl:left-[30%] xl:right-[30%] rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001">
                                 <h2 className="text-3xl font-semibold text-gray-800">Edit Ticket</h2>
                                 <EditTicketForm closeModal={setShowModal} id={id}/>
                             </div>

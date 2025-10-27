@@ -10,7 +10,7 @@ export function CreateTicketModal({closeModal}: {closeModal: (value: boolean) =>
     return (
         <section className="w-screen h-screen top-0 left-0 z-1000 fixed bg-[rgba(0,0,0,0.5)]">
             <div className="relative">
-                <div className="fixed top-10 left-[30%] right-[30%] h-auto rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001">
+                <div className="fixed top-10 left-3 right-3 sm:left-20 sm:right-20! md:left-[20%] md:right-[20%]! xl:left-[30%] xl:right-[30%]! h-auto rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001">
                     <h2 className="text-3xl font-semibold text-gray-800">Create Tickets</h2>
                     <CreateTicketForm closeModal={closeModal}/>
                 </div>
@@ -47,12 +47,12 @@ export function DeleteTicket({setDeleteModal, id}: {setDeleteModal: (value: bool
     return (
         <section className="w-screen h-screen top-0 left-0 z-1000 fixed bg-[rgba(0,0,0,0.5)]">
             <div className="relative">
-                <div className="fixed top-50 left-[30%] right-[30%] h-auto rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001 flex flex-col items-center justify-center">
+                <div className="fixed top-50 left-2 sm:left-20 sm:right-20 md:left-[20%] md:right-[20%] right-2 xl:left-[30%] xl:right-[30%] h-auto rounded-3xl shadow-lg bg-white opacity-100 p-10 z-1001 flex flex-col items-center justify-center">
                     <div>
                         <p>Are you sure you want to <span>delete</span> this ticket?</p>
                         <p>This action cannot be undone.</p>
                     </div>
-                    <div className="mt-6">
+                    <div className="mt-6 flex">
                         <Button className="bg-[#e7008a] text-white font-bold px-8 py-2 rounded mr-6" type="button" onClick={handleClick}>Delete</Button>
                         <Button className="text-[#e7008a] bg-white border border-[#e7008a] font-bold px-8 py-2 rounded" type="button" onClick={() => setDeleteModal(false)}>Cancel</Button>
                     </div>

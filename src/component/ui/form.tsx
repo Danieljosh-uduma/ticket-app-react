@@ -327,13 +327,13 @@ export function CreateTicketForm({closeModal}: {closeModal: (value: boolean) => 
                 <Button 
                     type="submit" 
                     isLoading={false} 
-                    className="bg-[#0066FF] text-white py-2.5 w-1/3 mx-auto rounded-3xl font-bold"
+                    className="bg-[#0066FF] text-white py-2.5 px-3 w-auto sm:w-1/3 mx-auto rounded-3xl text-sm sm:text-base font-bold"
                 >Create ticket</Button>
                 <Button 
                     type="button" 
                     isLoading={false} 
                     onClick={() => closeModal(false)} 
-                    className="text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] hover:text-white bg-white py-2.5 w-1/3 mx-auto rounded-3xl font-bold"
+                    className="text-[#0066FF] border border-[#0066FF] hover:bg-[#0066FF] text-sm sm:text-base hover:text-white bg-white py-2.5 w-1/3 mx-auto rounded-3xl font-bold"
                 >Cancel</Button>
             </div>
         </form>
