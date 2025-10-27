@@ -1,6 +1,8 @@
 import { Image } from "./image"
 import Logo from "../../assets/images/transparent-black-logo.png"
 import { Link, useNavigate } from "react-router"
+import { SideBar } from "./sidebar"
+import { useState } from "react"
 
 
 export function Header({link, title}: {link: string, title: string}) {
@@ -22,5 +24,27 @@ export function Header({link, title}: {link: string, title: string}) {
                 {title}
             </Link>
         </header>
+    )
+}
+
+export function DashboardHeader({title}: {title: string}) {
+    const [show, setShow] = useState(false)
+    const handleClick = () => {
+        setShow(!show)
+    }
+
+
+    return (
+        <>
+            {show && <SideBar className="md:hidden pb-20"/>}
+            <header className="h-20 w-full shadow-lg flex justify-between px-8 items-center sticky top-0 right-0 bg-white z-50">
+                <h3 className="text-2xl">{title}</h3>
+                <div className="md:hidden" onClick={handleClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </div>
+            </header>
+        </>
     )
 }

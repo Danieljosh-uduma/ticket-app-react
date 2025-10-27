@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import {LandingPage, LoginPage, SignupPage} from "../pages";
+import {Dashboard, LandingPage, LoginPage, SignupPage, TicketPage} from "../pages";
 
 
 export default function AppRouter() {
@@ -18,12 +18,12 @@ export default function AppRouter() {
         },
         {
             path: "/dashboard",
-            element: <h1>dashboard</h1>
+            Component: Dashboard
         },
         {
             path: "/tickets",
             children: [
-                {index: true, element: <h1>tickets list</h1>},
+                {index: true, Component: TicketPage},
                 {path: "create", element: <h1>create ticket</h1>},
                 {path: "view", element: <h1>view tickets</h1>}
             ]
