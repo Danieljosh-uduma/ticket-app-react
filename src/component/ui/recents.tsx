@@ -64,8 +64,8 @@ export function RecentTicketCard(
         openEditModal: () => void}
 ) {
     const [showModal, setShowModal] = useState(false)
-    const priorityColor = priority === "High" ? "text-red-600": priority === "Medium" ? "text-yellow-600" : "text-green-600"
-    const statusColor = status === "Open" ? "text-blue-600": status === "Closed" ? "text-green-600" : "text-gray-500"
+    const priorityColor = priority === "high" ? "text-red-600": priority === "medium" ? "text-blue-600" : "text-orange-600"
+    const statusColor = status === "open" ? "text-teal-600": status === "closed" ? "text-gray-600" : "text-amber-600"
 
     return (
         <div className="bg-white rounded-lg shadow-md p-6">

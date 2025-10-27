@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../hooks";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getTicket } from "../../services/api";
 import type { ticket } from "./recents";
@@ -7,7 +6,7 @@ import type { ticket } from "./recents";
 export function Overview() {
     const userDataString = localStorage.getItem("userdata");
     const user = userDataString ? JSON.parse(userDataString) : null;
-    const token = useContext(AuthContext)
+    const token = localStorage.getItem("ticketapp_session")
     const navigate = useNavigate()
     const [tickets, setTickets] = useState<ticket[]>([]) 
 

@@ -1,7 +1,6 @@
 import AppRouter from './router'
 import { makeServer } from './server/server'
 import "./App.css"
-import { AuthProvider } from './hooks/auth.js'
 
 makeServer()
 
@@ -9,9 +8,7 @@ function App() {
 
     return (
         <>
-            <AuthProvider>
-                <AppRouter />
-            </AuthProvider>
+            <AppRouter />
         </>
   )
 }

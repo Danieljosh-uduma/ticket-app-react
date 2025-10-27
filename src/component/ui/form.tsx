@@ -151,10 +151,7 @@ export function LoginForm() {
     const [validEmail, setValidEmail] = useState(true)
     const [validPassword, setValidPassword] = useState(true)
     const token = localStorage.getItem("ticketapp_session")
-    if (token) {
-        navigate("/dashboard")
-    }
-    // const [error, setError] = useState("")
+
 
     const validateEmail = (email: string) => {
         if (email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$")) {
@@ -171,9 +168,12 @@ export function LoginForm() {
         }
     }
         
+    const generateToken = () => createToken(email, password)
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-
+        if (token) {
+            navigate("/dashboard")
+        }
         if (validEmail && validPassword) {
             setMessage("successfully signed up")
             const userdata = {
@@ -181,9 +181,11 @@ export function LoginForm() {
                 password: password
             }
             Login(userdata).then(res => {
-                if (res.user) {
-                    localStorage.setItem("userdata", JSON.stringify(res.user))
-                    localStorage.setItem("ticketapp_session", createToken(res.user.fullname, res.user.email))
+                console.log(res)
+                if (res) {
+                    // localStorage.setItem("userdata", JSON.stringify(res.))
+                    console.log(generateToken(), res)
+                    localStorage.setItem("ticketapp_session", generateToken())
                     setTimeout(() => {
                         navigate("/dashboard")
                     }, 1000)
