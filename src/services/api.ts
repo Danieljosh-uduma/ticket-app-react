@@ -17,6 +17,23 @@ export async function SignUp(userdata: userData) {
     return data
 }
 
+export async function Login(userdata: {email: string, password: string}) {
+    const res = await fetch('/api/login', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify(userdata)
+    })
+
+    if (!res.ok) {
+        console.error("error occurred")
+        return null
+    }
+    const data = await res.json()
+    return data
+}
+
 export async function getTicket() {
     const res = await fetch('/api/tickets')
 
@@ -26,7 +43,6 @@ export async function getTicket() {
     }
     const data = await res.json()
     return data
-
 }
 
 export async function getTicketById(id: number) {

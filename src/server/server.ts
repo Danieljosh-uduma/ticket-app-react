@@ -28,6 +28,11 @@ export function makeServer() {
                 return schema.users.create(attrs)
             }, {timing: 500})
 
+            this.post("/login", (schema: any, request) => {
+                const attrs = JSON.parse(request.requestBody)
+                return schema.users.findBy({email: attrs.email, password: attrs.password})
+            })
+
             this.get("/tickets", (schema: any) => {
                 return schema.tickets.all()
             })

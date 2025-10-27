@@ -3,7 +3,7 @@ import { Button } from "./button";
 import { Input, TextArea } from "./input";
 import { createToken } from "../../server/token";
 import { useNavigate } from "react-router";
-import { createTicket, editTicketById, getTicketById, SignUp } from "../../services/api";
+import { createTicket, editTicketById, getTicketById, Login, SignUp } from "../../services/api";
 import type { ticketType, userData } from "../../services/types";
 
 export function SignupForm() {
@@ -150,6 +150,10 @@ export function LoginForm() {
     const [message, setMessage] = useState("")
     const [validEmail, setValidEmail] = useState(true)
     const [validPassword, setValidPassword] = useState(true)
+    const token = localStorage.getItem("ticketapp_session")
+    if (token) {
+        navigate("/dashboard")
+    }
     // const [error, setError] = useState("")
 
     const validateEmail = (email: string) => {
@@ -176,7 +180,15 @@ export function LoginForm() {
                 email: email,
                 password: password
             }
-            localStorage.setItem("userdata", JSON.stringify(userdata))
+            Login(userdata).then(res => {
+                if (res.user) {
+                    localStorage.setItem("userdata", JSON.stringify(res.user))
+                    localStorage.setItem("ticketapp_session", createToken(res.user.fullname, res.user.email))
+                    setTimeout(() => {
+                        navigate("/dashboard")
+                    }, 1000)
+                }}
+            )
 
             setTimeout(() => {
                 navigate("/dashboard")
@@ -215,7 +227,7 @@ export function LoginForm() {
                 required={true}
             />
 
-            <Button type="submit" isLoading={false} className="bg-[#0066FF] text-white py-2.5 w-1/3 mx-auto rounded-3xl font-bold">Sign up</Button>
+            <Button type="submit" isLoading={false} className="bg-[#0066FF] text-white py-2.5 w-1/3 mx-auto rounded-3xl font-bold">Login</Button>
         </form>
     )
 }
