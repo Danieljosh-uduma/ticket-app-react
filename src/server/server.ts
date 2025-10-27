@@ -4,7 +4,7 @@ import { createServer, Model } from "miragejs";
 export function makeServer() {
     const server = createServer({
         models: {
-            user: Model,
+            user: Model.extend({}),
             ticket: Model
         },
         seeds(server) {
@@ -22,49 +22,35 @@ export function makeServer() {
             this.namespace = "api"
 
             let nextUserid = 3
-            this.post("/signup", (schema, request) => {
+            this.post("/signup", (schema: any, request) => {
                 const attrs = JSON.parse(request.requestBody)
                 attrs.id = "user" +nextUserid++
-                return schema.users.create(attrs)
+                return schema.user.create(attrs)
             }, {timing: 500})
 
-            this.get("/tickets", (schema) => {
-                return schema.tickets.all()
+            this.get("/tickets", (schema: any) => {
+                return schema.ticket.all()
             })
 
-            this.get("/tickets/:id", (schema, request) => {
+            this.get("/tickets/:id", (schema: any, request) => {
                 return schema.tickets.find(request.params.id)
             })
 
-            this.put("/tickets/:id", (schema, request) => {
+            this.put("/tickets/:id", (schema: any, request) => {
                 return schema.tickets.find(request.params.id).update(JSON.parse(request.requestBody))
             })
 
-            this.delete("/tickets/:id", (schema, request) => {
+            this.delete("/tickets/:id", (schema: any, request) => {
                 return schema.tickets.find(request.params.id).destroy()
             })
 
             let nextTicketId =8
-            this.post("/tickets", (schema, request) => {
+            this.post("/tickets", (schema: any, request) => {
                 const attrs = JSON.parse(request.requestBody)
                 attrs.id = "ticket" + nextTicketId++
                 return schema.tickets.create(attrs)
             }, {timing: 500})
 
-            // this.get("/users", (schema) => schema.users.all())
-            // this.get("/users/:id", (schema, request) => {
-            //     return schema.users.find(request.params.id)
-            // })
-            // this.delete("/users/:id", (schema, request) => {
-            //     return schema.users.find(request.params.id).destroy()
-            // })
-            // let nextid = 1
-            // this.post("/users", (schema, request) => {
-            //     const attrs = JSON.parse(request.requestBody)
-            //     attrs.id = nextid++
-            //     // debugger
-            //     return schema.users.create(attrs)
-            // })
         }
     })
 
