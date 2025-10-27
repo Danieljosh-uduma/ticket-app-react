@@ -1,4 +1,4 @@
-import { createServer, Model, Factory } from "miragejs";
+import { createServer, Model } from "miragejs";
 
 
 export function makeServer() {
