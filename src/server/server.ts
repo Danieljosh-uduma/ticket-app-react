@@ -25,11 +25,11 @@ export function makeServer() {
             this.post("/signup", (schema: any, request) => {
                 const attrs = JSON.parse(request.requestBody)
                 attrs.id = "user" +nextUserid++
-                return schema.user.create(attrs)
+                return schema.users.create(attrs)
             }, {timing: 500})
 
             this.get("/tickets", (schema: any) => {
-                return schema.ticket.all()
+                return schema.tickets.all()
             })
 
             this.get("/tickets/:id", (schema: any, request) => {
