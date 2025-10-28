@@ -125,7 +125,7 @@ export function TicketsList({openModal}: {openModal: (value: boolean) => void}) 
             <div className="flex items-center justify-between mb-6">
                 <div>
                     <h2 className="text-3xl font-semibold text-gray-800">My Tickets</h2>
-                    <p>you have open tickets (2 total)</p>
+                    <p>you have open tickets ({TicketsList.filter(ticket => ticket.status === "open").length} total)</p>
                 </div>
                 <Button 
                     type="button" 

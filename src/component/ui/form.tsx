@@ -283,7 +283,7 @@ export function CreateTicketForm({closeModal}: {closeModal: (value: boolean) => 
             <Input 
                 name="title" 
                 label="Title *" 
-                placeholder="johndoe@gmail.com"
+                placeholder="Devops"
                 type="text" 
                 value={title} 
                 onChange={(e) => {setTitle(e.target.value); validateTitle(e.target.value)}} 
